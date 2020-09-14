@@ -1,0 +1,29 @@
+{%extends 'base.html'%}
+{%block title%}Listar Funcionários{%endblock%}
+{%block username%}{{saudacao}} {{user.first_name}} {%endblock%}
+{%block headerPager%}Listagem de Clientes{%endblock%}
+{%block subHeader%}
+Aqui você pode verificar os clientes cadastrados no banco de dados, <br>
+além de poder cadastrar novos através da opção "Adicionar Funcionário", <br>
+você também pode editar um cliente clicando em "Editar Funcionário" e também<br>
+excluir um cliente clicando na Lixeira a direita.
+{%endblock%}
+
+
+{%block main%}
+<div class="col-lg-8 mx-auto">
+  <form>
+    <input name="busca" class="form-control form-control-lg" type="text" placeholder="Insira sua busca" >
+    <br>
+    <button type="submit" class="btn btn-secondary btn-lg btn-block">Buscar</button>
+  </form>
+  <br>
+  <h4>Funcionários</h4>
+  {% for funcionario in func %}
+    {{ funcionario.id}} - {{funcionario.primeiroNome}} {{funcionario.ultimoNome}}
+    <a href="{%url 'editFunc' funcionario.id  %}">Editar funcionário</a>
+    <a href="{%url 'delFunc' funcionario.id  %}" class="fa fa-trash" aria-hidden="true"></a>
+  <br>
+  {%endfor%}
+</div>
+{%endblock%}

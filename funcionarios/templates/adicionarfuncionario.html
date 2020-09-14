@@ -1,0 +1,33 @@
+{%extends 'base.html'%}
+{% load bootstrap %}
+{%block title%}Adicionar Funcionário{%endblock%}
+{%block username%}{{saudacao}} {{user.first_name}} {%endblock%}
+{%block headerPager%}Adicionar Funcionário{%endblock%}
+{%block subHeader%}
+Aqui você pode cadastrar um novo funcionário no banco de dados <br>
+do qual será mostrado na tela de Listagem de Clientes. Você pode <br>
+também 'resetar' ao preencher as informações, além de sair, o que <br>
+não salvara as informações. Alguns campos são obrigatórios.
+{%endblock%}
+
+{%block main%}
+<div class="col-lg-8 mx-auto">
+
+
+    <form method="POST" enctype="multipart/form-data">
+        {%csrf_token%}
+        {{form|bootstrap}}
+        <br>
+        <button type="submit" class="btn btn-primary btn-lg btn-block">Salvar</button>
+        <button type="reset" class="btn btn-secondary btn-lg btn-block">Resetar</button>
+    </form>
+    <br>
+    <a href="{% url 'listFunc' %}">Voltar para lista de funcionários!</a>
+
+</div>
+{%endblock%}
+
+
+
+
+

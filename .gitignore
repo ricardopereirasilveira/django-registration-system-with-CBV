@@ -1,0 +1,11 @@
+funcionarios/migrations/*.py
+home/migrations/*.py
+loggin/users/*.txt
+media/func_pictures/*.jpg
+projectA/
+venv/
+__pycache__/
+.idea/
+*.sqlite3
+*.env
+*.DS_Store
