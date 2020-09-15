@@ -1,6 +1,23 @@
 from django.db import models
 
 
+class DocumentoRG(models.Model):
+    numeroRG = models.CharField(max_length=8, blank=True, null=True)
+
+    def __str__(self):
+        return self.numeroRG
+
+
+class DocumentoCPF(models.Model):
+    numeroCPF = models.CharField(max_length=11)
+
+    def __str__(self):
+        return self.numeroCPF
+
+
+class Produtos(models.Model):
+    pass
+
 class Funcionario(models.Model):
     primeiroNome = models.CharField(max_length=30)
     ultimoNome = models.CharField(max_length=30)
@@ -9,6 +26,8 @@ class Funcionario(models.Model):
     profile = models.ImageField(blank=True, null=True, upload_to='func_pictures')
     dataNascimento = models.DateField()
     acessarSistema = models.BooleanField(default=False)
+    rg = models.OneToOneField(DocumentoRG, on_delete=models.DO_NOTHING, blank=True, null=True)
+    cpf = models.OneToOneField(DocumentoCPF, on_delete=models.CASCADE, blank=True, null=True)
 
     def __str__(self):
         return f'{self.id} - {self.primeiroNome} {self.ultimoNome} '
