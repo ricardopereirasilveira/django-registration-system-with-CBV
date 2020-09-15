@@ -1,8 +1,7 @@
 {%extends 'base.html'%}
 {% load bootstrap %}
-{%block title%}Deletando Funcionário {{ func.primeiroNome}}{%endblock%}
-{%block username%}{{saudacao}} {{user.first_name}} {%endblock%}
-{%block headerPager%}Deletando {{ func.primeiroNome}} {{ func.ultimoNome}}{%endblock%}
+{%block title%}Deletando {{user.first_name}} {%endblock%}
+{%block headerPager%}Deletando {{ object.primeiroNome}} {{ object.ultimoNome}}{%endblock%}
 {%block subHeader%}
 Aqui estamos deletando o usuário do banco de dados, sem a possibilidade de retornar <br>
 o usuário novamente. Para cadadasrar o funcionário novamente, será necessário clicar <br>
@@ -13,7 +12,7 @@ em "Adicionar Cliente" e inserir as informações deletadas.
 {%block main%}
 <div class="col-lg-8 mx-auto">
   <br><center>
-  <h4>Deseja deletar {{ func.primeiroNome}} {{func.ultimoNome }} ?</h4><br>
+  <h4>Deseja deletar {{ object.primeiroNome}} {{object.ultimoNome }} ?</h4><br>
   <form method="post" enctype="multipart/form-data">
     {%csrf_token%}
       <button type="submit">Deletar!</button>
