@@ -1,3 +1,5 @@
+from django.views.generic.list import ListView
+
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 
@@ -39,35 +41,16 @@ def adicionarFuncionario(request):
     return render(request, 'adicionarfuncionario.html', {'form': form})
 
 
-# TODO: Inserir a busca por clientes por campo nome & sobrenome
-#       pois atualmente ele está buscando por itens isoladamente
-@login_required
-def listarFuncionario(request):
-    """
-    This form will List all users created in the DATABASE ( after creation ), there's possible to
-    Edit and Delete the user from webpage.
-    :param request: Will receive the request to render the page.
-    :return: Will return the
-    """
-    busca = request.GET.get('busca', None)
-    saudacao = funcs.saudacao()
-    user = request.user.username
-    try:
-        if busca:
-            infoLOG.imprimirINFO(f'{datetime.now()}', user,
-                                 f'Buscou por: "{busca}" em ListarFuncionario')
-            func = Funcionario.objects.all()
-            func = func.filter(primeiroNome__icontains=busca)
-        else:
-            infoLOG.imprimirINFO(f'{datetime.now()}', user,
-                                 f'visitou a sessao de ListarFuncionario')
-            func = Funcionario.objects.all()
-        return render(request, 'listarfuncionario.html', {'func': func, 'saudacao': saudacao})
-    except Exception as e:
-        infoLOG.imprimirERROR(f'{datetime.now()}',
-                              user,
-                              'a Sessao de listarFuncionarios falhou ao carregar o banco de dados!')
-        return render(request, 'listarfuncionario.html', {'func': func, 'saudacao': saudacao})
+
+class listarFuncionarios(ListView):
+    model = Funcionario
+    template_name = "funcionarios/listar-funcionario.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['first_name'] = self.request.user.first_name
+        return context
+
 
 
 @login_required
