@@ -2,26 +2,17 @@
 ## With that project, you can add, delete and edit a person to system
 
 **Features:**
-- All pages was done using the Function Based View (MVT);
+- All pages was done using the Class Based Views (CBV);
 - Page of Login ( _only users created in admin area can access_ )
 - Only superuser can delete from website;
 - Login/Logout;
 - Page Created using Bootstrap 4
 - Database SQLite3;
-- LOG* to verify the actions of users in System;
 - Search bar to find a user
 - Greeting to the user at the header;
 - Add person to SQLite3;
 - Edit person from SQLite3;
 - Delete person from SQLite3;
-
-***Log System**:
-- The logs register the activity of user each user/day, separated by files '_username-YYYY-MM-DD.txt_'
-- With the log system, you can manage the time and what user does;
-- The Log System has every action of user, even if he doesn't confirm the action
-- All files will be generated in folder (_/loggin/user/HERE.txt_)
-- You have 2 types of Log (Info and Error), both are generated automatilly.
-- If you have any error in your System, you can check it on user information;
 
 **Thanks to:**
 - https://www.djangoproject.com/ - for providing the Django Framework 
