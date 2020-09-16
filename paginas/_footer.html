@@ -1,0 +1,6 @@
+{% load saudacao %}
+<div class="container">
+  <p class="m-0 text-center text-white">Copyright &copy; 2020 - Project only to Learn about Django
+    <br>{% diaMesAnoHoraMinutoSegundo "%A, %d/%B/%Y - %H:%M:%S" %}
+    <br>{% diaCorrido "%-j" %}º dia da {%numeroSemana "%U"%}º semana
+</div>
