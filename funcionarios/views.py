@@ -2,18 +2,9 @@ from django.views.generic.list import ListView
 from django.views.generic.edit import UpdateView, CreateView, DeleteView
 from django.urls import reverse_lazy
 
-from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth.decorators import login_required
-
 from .models import Funcionario
-from .formulario import FormularioFuncionario
-
-from loggin import log
-from datetime import datetime
-from . import funcs
 
 
-infoLOG = log.LogginMIX()
 # FIXME: Insert a Favicon.ico
 
 
@@ -66,32 +57,3 @@ class deletarFuncionario(DeleteView):
         context = super().get_context_data(**kwargs)
         context['first_name'] = self.request.user.first_name
         return context
-
-
-#
-# # TODO: Inserir a página bootstrap personalizada
-# @login_required
-# def deletarFuncionario(request, id):
-#     """
-#     This function will delete a user from database, after select to delete in webpage.
-#
-#     :param request: Will receive the request to receive all information from server.
-#     :param id: Will receive the ID of user to be deleted.
-#     :return: Will return the request to render the page and the HTML of page.
-#     """
-#     saudacao = funcs.saudacao()
-#     user = request.user.username
-#     func = get_object_or_404(Funcionario, pk=id)
-#     infoLOG.imprimirINFO(f'{datetime.now()}', user,
-#             f'Entrou na tela de confirmação para deletar o {func}')
-#     if request.method == 'POST':
-#         try:
-#             infoLOG.imprimirINFO(f'{datetime.now()}', user,
-#                                  f'O usuário {func} foi DELETADO.'
-#                                  )
-#             func.delete()
-#             return redirect('listFunc')
-#         except Exception as e:
-#             pass
-#     return render(request, 'deletarfuncionario.html', {'func': func, 'saudacao': saudacao})
-#
