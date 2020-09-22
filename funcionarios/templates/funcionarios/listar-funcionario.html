@@ -11,7 +11,7 @@ excluir um cliente clicando na Lixeira a direita.
 
 {%block main%}
 <div class="col-lg-8 mx-auto">
-  <form>
+  <form method="GET" enctype="multipart/form-data">{%csrf_token%}
     <input name="busca" class="form-control form-control-lg" type="text" placeholder="Insira sua busca" >
     <br>
     <button type="submit" class="btn btn-secondary btn-lg btn-block">Buscar</button>
