@@ -43,7 +43,7 @@ class Vendas(models.Model):
     desconto = models.DecimalField(decimal_places=2, max_digits=10)
     imposto = models.DecimalField(decimal_places=2, max_digits=10)
     person = models.ForeignKey(Funcionario, null=True, blank=True, on_delete=models.PROTECT)
-    produtos = models.ManyToManyField(Produtos, blank=True, null=True, default='NULL')
+    produtos = models.ManyToManyField(Produtos, blank=True, default='NULL')
 
     def __str__(self):
         return f'{self.numero} - {self.valor} {self.person}'

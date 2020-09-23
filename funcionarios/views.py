@@ -2,7 +2,7 @@ from django.views.generic.list import ListView
 from django.views.generic.edit import UpdateView, CreateView, DeleteView
 from django.urls import reverse_lazy
 
-from .models import Funcionario
+from .models import Funcionario, Vendas, Produtos, DocumentoCPF, DocumentoRG
 
 
 # FIXME: Insert a Favicon.ico
@@ -53,6 +53,9 @@ class editarFuncionario(UpdateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['first_name'] = self.request.user.first_name
+        context['vendas'] = Vendas.objects.filter(
+            person_id=2
+        )
         return context
 
 

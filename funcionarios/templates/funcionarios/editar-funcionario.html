@@ -20,5 +20,17 @@ além de ser possível excluir o funcionário também através do botão <br>
       <button type="submit" class="btn btn-primary btn-lg btn-block">Salvar</button>
       <a href="{%url 'delFunc' object.id  %}" class="btn btn-secondary btn-lg btn-block">Excluir Funcionário</a>
   </form>
+
+
+
+  {% for venda in vendas %}
+  <p> Venda: {{venda.id}}</p>
+  <h3>Lista de Produtos:</h3>
+  <ul>
+<!--      {% for produto in venda.produtos.all %}-->
+<!--        <li>{{produto.id}} - {{produto.preco}}</li>-->
+<!--      {%endfor%}-->
+  </ul>
+  {%endfor%}
 </div>
 {%endblock%}
