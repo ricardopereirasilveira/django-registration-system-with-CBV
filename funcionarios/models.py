@@ -26,8 +26,13 @@ class Funcionario(models.Model):
     rg = models.OneToOneField(DocumentoRG, on_delete=models.DO_NOTHING, blank=True, null=True)
     cpf = models.OneToOneField(DocumentoCPF, on_delete=models.CASCADE, blank=True, null=True)
 
-    def __str__(self):
-        return f'{self.id} - {self.primeiroNome} {self.ultimoNome} '
+    def hasPicture(self):
+        if self.profile:
+            return True
+        else:
+            return False
+    hasPicture.short_description = 'Possui Foto'
+
 
 
 class Produtos(models.Model):
@@ -45,5 +50,21 @@ class Vendas(models.Model):
     person = models.ForeignKey(Funcionario, null=True, blank=True, on_delete=models.PROTECT)
     produtos = models.ManyToManyField(Produtos, blank=True, default='NULL')
 
-    def __str__(self):
-        return f'{self.numero} - {self.valor} {self.person}'
+    def nomeCompleto(self):
+        return self.person.primeiroNome + ' ' + self.person.ultimoNome
+    nomeCompleto.short_description = 'Nome Completo'
+
+    def aPagar(self):
+        valorTotal = 0
+        for produto in self.produtos.all():
+            valorTotal += produto.preco
+        valorTotal = (valorTotal + self.imposto) - self.desconto
+        return valorTotal
+    aPagar.short_description = 'A Pagar'
+
+    def valorCompra(self):
+        totalCompra = 0
+        for produto in self.produtos.all():
+            totalCompra += produto.preco
+        return totalCompra
+    valorCompra.short_description = 'Total Compra'

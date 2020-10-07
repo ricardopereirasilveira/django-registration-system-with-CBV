@@ -11,10 +11,10 @@ from .models import Funcionario, Vendas, Produtos, DocumentoCPF, DocumentoRG
 class adicionarFuncionario(CreateView):
     model = Funcionario
     template_name = 'funcionarios/adicionar-funcionario.html'
-    fields = [
+    fields = (
         'primeiroNome', 'ultimoNome', 'idade', 'email', 'profile', 'dataNascimento', 'acessarSistema',
         'rg', 'cpf'
-    ]
+    )
     success_url = reverse_lazy('listFunc')
 
     def get_context_data(self, **kwargs):
