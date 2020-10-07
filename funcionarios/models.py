@@ -69,7 +69,10 @@ class Vendas(models.Model):
         return totalCompra
     valorCompra.short_description = 'Total Compra'
 
+
 class itemDoPedido(models.Model):
     venda = models.ForeignKey(Vendas, on_delete=models.DO_NOTHING)
     produto = models.ForeignKey(Produtos, on_delete=models.DO_NOTHING)
     quantidade = models.FloatField()
+    desconto = models.FloatField(null=True, blank=True, default=0)
+    imposto = models.FloatField(null=True, blank=True, default=0)
