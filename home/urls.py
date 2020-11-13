@@ -8,5 +8,6 @@ from . import views
 urlpatterns = [
     path('', views.home, name='home'),
     path('login/', auth_views.LoginView.as_view(), name='login'),
-    path('logout/', views.logout, name='logout')
+    path('logout/', views.logout, name='logout'),
+    path('dashboard/', views.dashboard.as_view(), name='dashboard'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

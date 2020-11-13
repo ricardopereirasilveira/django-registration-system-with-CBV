@@ -20,10 +20,12 @@ from django.conf.urls.static import static
 from .views import helloNome, rastrearEncomenda, contaAdicao, contaSubtracao, horario24Horas
 from funcionarios import urls as funcURL
 from home import urls as homeURL
+from venda import urls as vendaURL
 
 
 urlpatterns = [
     path('', include(homeURL)),
+    path('', include(vendaURL)),
     path('funcionarios/', include(funcURL)),
     path('conta/soma/<int:valor1>/<int:valor2>', contaAdicao),
     path('conta/subtracao/<int:valor1>/<int:valor2>', contaSubtracao),

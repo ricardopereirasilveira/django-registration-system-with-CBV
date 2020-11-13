@@ -2,7 +2,8 @@ from django.views.generic.list import ListView
 from django.views.generic.edit import UpdateView, CreateView, DeleteView
 from django.urls import reverse_lazy
 
-from .models import Funcionario, Vendas, Produtos, DocumentoCPF, DocumentoRG
+from .models import Funcionario
+from venda.models import Vendas
 
 
 # FIXME: Insert a Favicon.ico

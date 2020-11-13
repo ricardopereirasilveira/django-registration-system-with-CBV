@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'bootstrapform',
     'funcionarios',
+    'venda',
+    'produto',
     'debug_toolbar',
 ]
 
@@ -60,7 +62,7 @@ ROOT_URLCONF = 'primeiroProjeto.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['paginas'],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
